@@ -13,7 +13,7 @@ public class SendSms {
 		// TODO Auto-generated method stub
 		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 		
-		Message message = Message.creator(new PhoneNumber("+7033045506"),new PhoneNumber("+17032935022"),"Andrew is texting you, reply").create();
+		Message message = Message.creator(new PhoneNumber("+17033045506"),new PhoneNumber("+17032935022"),"Andrew is texting you, reply").create();
 	
 		System.out.println(message.getSid());
 	}

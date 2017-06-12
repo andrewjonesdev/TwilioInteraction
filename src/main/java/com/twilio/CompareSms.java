@@ -15,7 +15,7 @@ public abstract class CompareSms {
     //Long number = new Long(17033045506L);
     int count1= 0;
     int count2=0;
-    int sleep = 5;
+    int sleep = 3;
     ResourceSet<Message> messages = Message.reader().read();
     ResourceSet<Message> messages2 = Message.reader().read();
 	count1 = 0;
@@ -31,7 +31,7 @@ public abstract class CompareSms {
     }
     do{
 
-	    System.out.println("Count1: "+count1);
+	    //System.out.println("Count1: "+count1);
 	    	try{
 	    		TimeUnit.SECONDS.sleep(sleep);
 	    	}
@@ -39,7 +39,7 @@ public abstract class CompareSms {
 	    		
 	    	}
 	    	//To add delays for long responses to cut down on processing
-	    	if(sleep<5){
+	    	if(sleep<3){
 	    		sleep++;
 	    	}
 	    	count2 = 0;
@@ -52,13 +52,67 @@ public abstract class CompareSms {
 	        		//break;
 	        	}
 	        }
-	        System.out.println("Count2: "+count2);
+	        //System.out.println("Count2: "+count2);
 	        if(count1<count2){
 	        	return true;
 	        }
-	        System.out.println(sleep);
+	        //System.out.println(sleep);
 	        messages2 = Message.reader().read();
     }while(count1==count2);
     return false;
 	}
+	
+	
+	
+	public static boolean newRequest (String play){
+	    Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+	    //Long number = new Long(17033045506L);
+	    int count1= 0;
+	    int count2=0;
+	    int sleep = 3;
+	    ResourceSet<Message> messages = Message.reader().read();
+	    ResourceSet<Message> messages2 = Message.reader().read();
+		count1 = 0;
+	    for (Message message : messages) {
+	    	if(message.getBody().toString().toLowerCase()/*.substring(0, play.length())*/.equals(play.toLowerCase())){
+	    		//System.out.println(message.getBody());
+	    		count1++;
+	    		//System.out.println(message.getFrom());
+	    		//System.out.println("Hello");
+	    		//break;
+	    		
+	    	}
+	    }
+	    do{
+
+		   // System.out.println("Count1: "+count1);
+		    	try{
+		    		TimeUnit.SECONDS.sleep(sleep);
+		    	}
+		    	catch(InterruptedException e){
+		    		
+		    	}
+		    	//To add delays for long responses to cut down on processing
+		    	if(sleep<3){
+		    		sleep++;
+		    	}
+		    	count2 = 0;
+		        for (Message message2 : messages2) {
+		        	if(message2.getBody().toString().toLowerCase()/*.substring(0, play.length())*/.equals(play.toLowerCase())){
+		        		//System.out.println(message.getBody());
+		        		count2++;
+		        		//System.out.println(message.getFrom());
+		        		//System.out.println("Hello");
+		        		//break;
+		        	}
+		        }
+		        //System.out.println("Count2: "+count2);
+		        if(count1<count2){
+		        	return true;
+		        }
+		       // System.out.println(sleep);
+		        messages2 = Message.reader().read();
+	    }while(count1==count2);
+	    return false;
+		}
 }

@@ -10,7 +10,7 @@ public class Test {
 		//YOReturnSms.reply("+17033045506");
 		//Game game = new Game();
 		//game.play();
-		System.out.println(CompareSms.newMessage("+17033045506"));
+		//System.out.println(CompareSms.newMessage("+17033045506"));
 	}
 
 }

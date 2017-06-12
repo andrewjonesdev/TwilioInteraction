@@ -52,4 +52,26 @@ public class ListMessage {
     
     
   }
+  public static String receiveSpecificText(String play){
+	    Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+	    //Long number = new Long(17033045506L);
+	    ResourceSet<Message> messages = Message.reader().read();
+	    //String bin = "";
+	
+	    for (Message message : messages) {
+	    	if(message.getBody().toString().toLowerCase()/*.substring(0, play.length())*/.equals(play.toLowerCase())){
+	    		//System.out.println(message.getBody());
+	    		System.out.println(message.getFrom().toString());
+	    		return message.getFrom().toString();
+	    		//System.out.println(message.getFrom());
+	    		//System.out.println("Hello");
+	    		//break;
+	    	}
+	    
+	    }
+	    return "No Message Sent with this value";
+	    
+
+	    
+	  }
 }

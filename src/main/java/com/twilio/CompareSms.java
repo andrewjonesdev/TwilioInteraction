@@ -74,7 +74,7 @@ public abstract class CompareSms {
 	    ResourceSet<Message> messages2 = Message.reader().read();
 		count1 = 0;
 	    for (Message message : messages) {
-	    	if(message.getBody().toString().toLowerCase()/*.substring(0, play.length())*/.equals(play.toLowerCase())){
+	    	if(message.getBody().toString().toLowerCase()/*.substring(0, play.length())*/.contains(play.toLowerCase())){
 	    		//System.out.println(message.getBody());
 	    		count1++;
 	    		//System.out.println(message.getFrom());
@@ -98,7 +98,7 @@ public abstract class CompareSms {
 		    	}
 		    	count2 = 0;
 		        for (Message message2 : messages2) {
-		        	if(message2.getBody().toString().toLowerCase()/*.substring(0, play.length())*/.equals(play.toLowerCase())){
+		        	if(message2.getBody().toString().toLowerCase()/*.substring(0, play.length())*/.contains(play.toLowerCase())){
 		        		//System.out.println(message.getBody());
 		        		count2++;
 		        		//System.out.println(message.getFrom());

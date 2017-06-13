@@ -59,7 +59,7 @@ public class ListMessage {
 	    //String bin = "";
 	
 	    for (Message message : messages) {
-	    	if(message.getBody().toString().toLowerCase()/*.substring(0, play.length())*/.equals(play.toLowerCase())){
+	    	if(message.getBody().toString().toLowerCase()/*.substring(0, play.length())*/.contains(play.toLowerCase())){
 	    		//System.out.println(message.getBody());
 	    		System.out.println(message.getFrom().toString());
 	    		return message.getFrom().toString();
